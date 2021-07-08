@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Basic Styling-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <!--Navbar goes here-->
+    <nav>
+        <div class="navLeft">
+            <li class="icon"><a href="#">Link 1</a></li>
+            <li class="item"><a href="#">Link 2</a></li>
+            <li class="item has-submenu">
+                <a tabindex="0">Link 3</a>
+                <ul class="submenu">
+                    <li class="subitem"><a href="#">Link 1</a></li>
+                    <li class="subitem"><a href="#">Link 2</a></li>
+                    <li class="subitem"><a href="#">Link 3</a></li>
+                </ul>
+            </li>
+        </div>
+    
+        <div class="navRight">
+            <li class="item"><a href="#">Link 1</a></li>
+            <li class="item"><a href="#">Link 2</a></li>
+            <li class="item"><a href="#">Link 3</a></li>
+        </div>
+    </nav>
+    
+    <!--Top Section goes here-->
+    <div class="container">
+        <div class="content-wrapper">
+        <h2>Loan Amount</h2>
+        <p class="instructions">
+            Choose loan amount between <strong>$1000</strong> and <strong>$150,000</strong>
+        </p>
+        <!--Loan Selector goes here-->
+        <div class="amount">
+        <input type="text" value="" label="Loan Amount" id="demo"></span></p>
+        <input type="range" min="1000" max="150000" value="70000" class="slider" id="sliderRange">
+        </div>
+        </div>
+    
+    <!--Bottom Section - Loan Details-->
+    <div class="content-wrapper">
+    <h2>Loan Details</h2>
+    <hr>
+    <div class="detail-container">
+        <div class="loan-detail">
+            <span class="label">Term</span>
+            <p class="detail">30 Years</p>
+        </div>
+        <div class="loan-detail">
+            <span class="label">Interest Rate</span>
+            <p class="detail">3.75%</p>
+        </div>
+        <div class="loan-detail">
+            <span class="label">Payment Frequency</span>
+            <p class="detail">Monthly</p>
+        </div>
+        <div class="loan-detail">
+            <span class="label">Repayment Start</span>
+            <p class="detail">12 Months After Closing</p>
+        </div>
+        <div class="loan-detail">
+            <span class="label">Third Party Filing Fee</span>
+            <p class="detail">$100.00</p>
+        </div>
+        <div class="loan-detail">
+            <span class="label">Payment Amount</span>
+            <p class="detail">$<span id="payment">1000</span></p>
+        </div>
+    </div>
+    </div>
+
+
+        </div>
+    <script>
+        var rangeslider = document.getElementById("sliderRange");
+            var output = document.getElementById("demo");
+            var loanPayment = document.getElementById("payment")
+            output.value = rangeslider.value;
+            
+
+            rangeslider.oninput = function () {
+                output.value = this.value;
+                loanPayment.innerHTML = Math.trunc((this.value / 360)*100)/100;
+            }
+
+            output.oninput = function () {
+                rangeslider.value = this.value;
+            }
+
+
+    </script>   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
