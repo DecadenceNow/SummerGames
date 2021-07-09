@@ -80,7 +80,7 @@
     <div class="detail-container">
         <div class="loan-detail">
             <span class="label">Term</span>
-            <p class="detail">30 Years</p>
+            <p class="detail"><span id="term">30</span> Years</p>
         </div>
         <div class="loan-detail">
             <span class="label">Interest Rate</span>
@@ -115,21 +115,25 @@
 
 
         let myRate = document.getElementById("rate");
-            
+        let myTerm = document.getElementById("term");    
         const intRate = function () {
                 let newRate = 0;
+                let newTerm = 0;
                 let loanValue = output.value;
                 if (loanValue < 10000) {
                     newRate = 2.00;
+                    newTerm = 5;
                 } else if (loanValue < 50000) {
                     newRate = 3.75;
+                    newTerm = 15;
                 } else if (loanValue < 100000) {
                     newRate = 4.50;
+                    newTerm = 30;
                 } else {
                     newRate = 6.00;
+                    newTerm = 30;
                 }
-                    return newRate;
-                console.log(newRate);
+                    return [newRate, newTerm];
             }
 
 
@@ -139,9 +143,9 @@
             output.value = rangeslider.value;
 
             let loanDetails = function () {
-                
-                intRate();
-                myRate.innerHTML = intRate();
+                const deets = intRate();
+                myRate.innerHTML = deets[0];
+                myTerm.innerHTML = deets[1];
             }
 
             rangeslider.oninput = function () {
