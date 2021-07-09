@@ -9,8 +9,53 @@ body{
     padding: 15px;
 }
 
+
+/*  Stepper styling goes here  */
+.stepper {
+  display: flex;
+  margin: 20px 0 0 0;  
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  position: relative;
+}
+
+.stepper__item {
+  flex: 100%;
+  padding: 20px 20px 20px 40px;
+  background: #d3d3d3;
+  margin: 0 0 0 -19px;
+  font-weight: bold;
+  -webkit-clip-path: polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+  
+}
+
+.stepper__item.current {
+    background: #0050d8;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .stepper__item.complete {
+    background: #efeeee;
+    color: #d3d3d3;
+    font-weight: normal;
+  }
+  
+  .stepper__item:first-child {
+    padding: 20px;
+    -webkit-clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+  }
+  
+  .stepper__item:last-child {
+    -webkit-clip-path: polygon(20px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+/*End Stepper*/
+
+
 .content-wrapper { 
     margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 /*                         Slider                                     */
@@ -55,13 +100,34 @@ body{
 }
 
 
+.amount {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.amount > p {
+    text-align: center;
+}
+
+.amount-text {
+    align-self: center; 
+}
+
+.currency {
+    color: #0050d8!important;
+    font-size: 2rem;
+    position: relative;
+    bottom: 3px;
+    left: 40px;
+}
+
 .loan-amount {
     color: #0050d8!important;
     font-size: 3rem;
     vertical-align: middle;
 
 }
-
 
 .detail-container {
     display: flex;
@@ -79,3 +145,40 @@ body{
     font-size: 1.5rem;
     color:#0050d8;
 }
+
+.label-text {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.instructions {
+    font-style: italic;
+    color: #666;
+}
+
+#demo {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-radius: 10px;
+  border: 1px solid #ececec;
+  padding: 0.25em 0.5em;
+  margin: 0 0 0.4em 0;
+  font-size: 2.5rem;
+  color:#0050d8;
+  text-align: center;
+  font-weight: bold;
+  max-width: 700px;  
+}
+
+#demo:before {
+    content: '$';
+    color: red;
+    position: absolute;
+}
+
+#demo:hover{ 
+    border: 1px solid #0050d8;
+    transition: border-color 2s;
+}
+

@@ -11,45 +11,71 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <!--Navbar goes here-->
-    <nav>
-        <div class="navLeft">
-            <li class="icon"><a href="#">Link 1</a></li>
-            <li class="item"><a href="#">Link 2</a></li>
-            <li class="item has-submenu">
-                <a tabindex="0">Link 3</a>
-                <ul class="submenu">
-                    <li class="subitem"><a href="#">Link 1</a></li>
-                    <li class="subitem"><a href="#">Link 2</a></li>
-                    <li class="subitem"><a href="#">Link 3</a></li>
-                </ul>
+    
+<!--Navbar goes here-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-        </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            Navbar text with an inline element
+        </span>
+    </div>
+</nav>
+
+
+<!--Main Content goes here-->
     
-        <div class="navRight">
-            <li class="item"><a href="#">Link 1</a></li>
-            <li class="item"><a href="#">Link 2</a></li>
-            <li class="item"><a href="#">Link 3</a></li>
-        </div>
-    </nav>
-    
-    <!--Top Section goes here-->
     <div class="container">
+        <h2>Loan Application, Ya'll</h2>
+        <p class = "instructions">Some  platitudes referencing "these unprecedented/uncertain times" and then something about how we're here to help. Add smiling parents holding their child in some big "aww" moment that makes our brand both relatable and nonthreatening. All this to distract from the immutable fact that life is pain.</p>
+
+            <!--Progress Bar or Stepper goes here -->
+
+            <!--Copy a line using Shift+Option+Arrow (Mac) or Shift+Alt+Arrow (Win)-->
+            <!--Edit multiple lines using Opt+Cmd+Arrow (Mac) or Ctrl+Alt+Arrow(Win)-->
+            <ul class="stepper">
+                <li class="stepper__item complete">Application</li>
+                <li class="stepper__item current">Processing</li>
+                <li class="stepper__item">Funding</li>
+            </ul>
+            
+    <!--Loan Selector goes here-->
+
         <div class="content-wrapper">
-        <h2>Loan Amount</h2>
+        <h4>Loan Amount</h4>
+        <hr>
+        <div class="amount">
+        <p class="label-text">I would like to borrow:</p>
+        <div class="amount-text">
+        <span class="currency">$</span>
+        <input type="text" value="" label="Loan Amount" id="demo">
+        </div>
         <p class="instructions">
             Choose loan amount between <strong>$1000</strong> and <strong>$150,000</strong>
         </p>
-        <!--Loan Selector goes here-->
-        <div class="amount">
-        <input type="text" value="" label="Loan Amount" id="demo"></span></p>
         <input type="range" min="1000" max="150000" value="70000" class="slider" id="sliderRange">
+        
         </div>
         </div>
     
-    <!--Bottom Section - Loan Details-->
+    <!--Loan Details go here -->
     <div class="content-wrapper">
-    <h2>Loan Details</h2>
+    <h4>Loan Details</h4>
     <hr>
     <div class="detail-container">
         <div class="loan-detail">
@@ -58,7 +84,7 @@
         </div>
         <div class="loan-detail">
             <span class="label">Interest Rate</span>
-            <p class="detail">3.75%</p>
+            <p class="detail"><span id="rate">3.75</span>%</p>
         </div>
         <div class="loan-detail">
             <span class="label">Payment Frequency</span>
@@ -77,27 +103,59 @@
             <p class="detail">$<span id="payment">1000</span></p>
         </div>
     </div>
+    <hr>
     </div>
 
+    <!--BUTTON GROUP HERE-->
+    <button type="button" class="btn btn-danger">Cancel</button>
+    <button type="button" class="btn btn-primary float-right">Accept</button>
 
         </div>
     <script>
+
+
+        let myRate = document.getElementById("rate");
+            const intRate = function () {
+                let newRate = 0;
+                let loanValue = output.value;
+                if (loanValue < 10000) {
+                    newRate = 2.00;
+                } else if (loanValue < 50000) {
+                    newRate = 3.75;
+                } else if (loanValue < 100000) {
+                    newRate = 4.50;
+                } else {
+                    newRate = 6.00;
+                }
+                    return newRate;
+                console.log(newRate);
+            }
+
         var rangeslider = document.getElementById("sliderRange");
             var output = document.getElementById("demo");
-            var loanPayment = document.getElementById("payment")
+            var loanPayment = document.getElementById("payment");
             output.value = rangeslider.value;
+
             
 
             rangeslider.oninput = function () {
                 output.value = this.value;
                 loanPayment.innerHTML = Math.trunc((this.value / 360)*100)/100;
+                intRate();
+                myRate.innerHTML = intRate();
+
             }
 
             output.oninput = function () {
-                rangeslider.value = this.value;
-            }
+                rangeslider.value = (this.value);
+                console.log(rangeslider.value);
+                intRate();
+                myRate.innerHTML = intRate();
+            }          
+        
 
-
+        
+        
     </script>   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
