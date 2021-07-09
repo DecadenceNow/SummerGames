@@ -99,6 +99,7 @@ body{
   border-radius: 50%;
 }
 
+/* Text input, instructions, containers, and other text */
 
 .amount {
     display: flex;

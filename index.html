@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    
+ 
 <!--Navbar goes here-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar w/ text</a>
@@ -115,7 +115,8 @@
 
 
         let myRate = document.getElementById("rate");
-            const intRate = function () {
+            
+        const intRate = function () {
                 let newRate = 0;
                 let loanValue = output.value;
                 if (loanValue < 10000) {
@@ -131,26 +132,28 @@
                 console.log(newRate);
             }
 
+
         var rangeslider = document.getElementById("sliderRange");
             var output = document.getElementById("demo");
             var loanPayment = document.getElementById("payment");
             output.value = rangeslider.value;
 
-            
+            let loanDetails = function () {
+                
+                intRate();
+                myRate.innerHTML = intRate();
+            }
 
             rangeslider.oninput = function () {
                 output.value = this.value;
-                loanPayment.innerHTML = Math.trunc((this.value / 360)*100)/100;
-                intRate();
-                myRate.innerHTML = intRate();
-
+                loanPayment.innerHTML = Math.trunc((this.value / 360) * 100) / 100;
+                loanDetails();
             }
 
             output.oninput = function () {
                 rangeslider.value = (this.value);
-                console.log(rangeslider.value);
-                intRate();
-                myRate.innerHTML = intRate();
+                loanPayment.innerHTML = Math.trunc((this.value / 360) * 100) / 100;
+                loanDetails();
             }          
         
 
